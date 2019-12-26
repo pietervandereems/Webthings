@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/pietervandereems/Webthings/issues"
   },
-  "homepage": "https://github.com/pietervandereems/Webthings#readme"
+  "homepage": "https://github.com/pietervandereems/Webthings#readme",
+  "dependencies": {
+    "webthing": "^0.12.0"
+  }
 }
