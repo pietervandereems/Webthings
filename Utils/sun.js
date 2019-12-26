@@ -23,7 +23,6 @@ const asinDeg = deg => Math.asin(deg) * 360.0 / (2 * Math.PI);
 const acosDeg = deg => Math.acos(deg) * 360.0 / (2 * Math.PI);
 
 const sunriseSunset = ({ now = new Date(), latitude = 52.266075, longitude = 6.155217, sunrise = true, zenith = 90.8333 } = {}) => {
-  console.log({ now });
   const degreesPerHour = 360 / 24;
   const hoursFromMeridian = longitude / degreesPerHour;
   const approxTimeOfEventInDays = getDayOfYear(now) + ((sunrise ? 6 : 18 - hoursFromMeridian) / 24);
@@ -51,7 +50,6 @@ const sunriseSunset = ({ now = new Date(), latitude = 52.266075, longitude = 6.1
   const localMeanTime = localHour + rightAscension - (0.06571 * approxTimeOfEventInDays) - 6.622;
 
   const time = mod(localMeanTime - hoursFromMeridian, 24);
-  console.log(time);
 
   return new Date(new Date(now).setUTCHours(0, 0, 0, 0) + (time * 60 * 60 * 1000));
 };
