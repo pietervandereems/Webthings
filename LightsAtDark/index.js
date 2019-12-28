@@ -1,30 +1,13 @@
 const { Thing, Property, SingleThing, Value, WebThingServer } = require('webthing');
 const { isDark } = require('../Utils/sun');
-
-
-const lampsOn = () => {
-  const now = new Date();
-  const dark = isDark();
-
-  if (dark) {
-    if (now.getHours() < 23) {
-      return true;
-    }
-
-    if (now.getHours() > 7 && now.getMinutes() > 30) {
-      return true;
-    }
-  }
-
-  return false;
-};
+const lampsOn = require('./lamps');
 
 const indicator = new Thing('urn:dev:ops:indicator:dark',
   'Indicator Dark',
   ['BinarySensor', 'BooleanProperty'],
   'A Darkness indicator with a time limit');
 
-const dark = new Value(lampsOn());
+const dark = new Value(lampsOn()(isDark()));
 
 indicator.addProperty(
   new Property(
