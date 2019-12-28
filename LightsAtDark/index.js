@@ -24,12 +24,11 @@ indicator.addProperty(
 );
 
 const checkTime = setInterval(() => {
-  const turnLampsOn = lampsOn();
+  const turnLampsOn = lampsOn()(isDark());
   if (turnLampsOn !== dark.get()) {
-    console.log('lampsOn changed to', turnLampsOn);
     dark.set(turnLampsOn);
   }
-});
+}, 60000);
 
 const server = new WebThingServer(new SingleThing(indicator), 8888);
 
