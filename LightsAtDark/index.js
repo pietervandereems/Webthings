@@ -8,6 +8,7 @@ const indicator = new Thing('urn:dev:ops:indicator:dark',
   'A Darkness indicator with a time limit');
 
 const dark = new Value(lampsOn()(isDark()));
+console.log('initial dark value:', dark.get());
 
 indicator.addProperty(
   new Property(
