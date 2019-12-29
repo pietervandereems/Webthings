@@ -3,8 +3,8 @@ const { isDark } = require('../Utils/sun');
 const lampsOn = require('./lamps');
 
 const indicator = new Thing('urn:dev:ops:indicator:dark',
-  'Indicator Dark',
-  ['BinarySensor', 'BooleanProperty'],
+  'Chase away the darkness',
+  ['BinarySensor'],
   'A Darkness indicator with a time limit');
 
 const dark = new Value(lampsOn()(isDark()));
@@ -16,11 +16,12 @@ indicator.addProperty(
     dark,
     {
       '@type': 'BooleanProperty',
-      description: 'Whether to turn on lamps to scare away the darkness',
+      title: 'On',
+      type: 'boolean',
       readOnly: true,
-      title: 'True/False',
-      type: 'boolean'
-    })
+      description: 'Whether the lamps should be turned on to chase away the darkness'
+    }
+    )
 );
 
 const checkTime = setInterval(() => {
