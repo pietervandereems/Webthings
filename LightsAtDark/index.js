@@ -28,6 +28,7 @@ indicator.addProperty(
 const checkTime = setInterval(() => {
   const turnLampsOn = lampsOn()(isDark());
   if (turnLampsOn !== dark.get()) {
+    console.log(new Date(), 'Changing to', turnLampsOn);
     dark.set(turnLampsOn);
   }
 }, 60000);
